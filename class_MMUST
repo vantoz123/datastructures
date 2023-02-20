@@ -1,0 +1,74 @@
+public class MMUSTLinkedIn {
+    
+    private class Node {
+        private Object data;
+        private Node next;
+        
+        public Node(Object data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+    
+    private Node head;
+    private Node tail;
+    
+    public MMUSTLinkedIn() {
+        this.head = null;
+        this.tail = null;
+    }
+    
+    public boolean isEmpty() {
+        return head == null;
+    }
+    
+    public void addNode(Object data) {
+        Node newNode = new Node(data);
+        if (isEmpty()) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+    
+    public void removeNode(Object data) {
+        if (isEmpty()) {
+            throw new IllegalStateException("LinkedList is empty");
+        }
+        
+        if (head.data.equals(data)) {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }
+            return;
+        }
+        
+        Node prev = head;
+        Node curr = prev.next;
+        while (curr != null) {
+            if (curr.data.equals(data)) {
+                prev.next = curr.next;
+                if (prev.next == null) {
+                    tail = prev;
+                }
+                return;
+            }
+            prev = curr;
+            curr = curr.next;
+        }
+        
+        throw new IllegalStateException("Node not found in LinkedList");
+    }
+    
+    public void printNodes() {
+        Node curr = head;
+        while (curr != null) {
+            System.out.println(curr.data);
+            curr = curr.next;
+        }
+    }
+}
+
