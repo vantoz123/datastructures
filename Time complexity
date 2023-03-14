@@ -1,0 +1,2 @@
+The time complexity of each operation in the MMUSTLinkedIn and LinkedListStack classes depends on the underlying linked list implementation. Here are the time complexities of each operation in terms of big O notation:
+addFirst and addLast: O(1) - adding an item to the beginning or end of the linked list takes constant time, regardless of the size of the list.
